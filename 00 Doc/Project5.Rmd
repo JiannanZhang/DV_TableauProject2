@@ -1,0 +1,21 @@
+---
+title: "Project 3"
+author: "Jeffrey Zhang and Jaclyn Nguyen"
+date:
+output: html_document
+---
+
+__1. Loading of R packages: RCurl, ggplot2, extrafont, jsonlite, dplyr, tidyr, extrafont, jsonlite, reshape2 (R code not shown)__
+
+```{r, include=FALSE}
+library(RCurl)
+library (ggplot2)
+library(extrafont)
+library(reshape2)
+require("jsonlite")
+require(dplyr)
+require(tidyr)
+require(reshape2)
+```
+
+df <- data.frame(fromJSON(getURL(URLencode('129.152.144.84:5001/rest/native/?query="select * from medcharge"'),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521:ORCL',USER='C##cs329e_jz7674',PASS='orcl_jz7674',MODE='native_mode',MODEL='model',returnDimensions = 'False',returnFor = 'JSON'),verbose = TRUE)))
