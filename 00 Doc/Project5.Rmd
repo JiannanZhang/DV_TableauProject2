@@ -19,6 +19,6 @@ require(reshape2)
 ```
 
 ```{r}
-source("../01 Data/df.R",echo = T)
+source("../03 Data/df.R",echo = T)
 tbl_df(df)
 ```
