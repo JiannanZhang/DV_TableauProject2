@@ -1,5 +1,5 @@
 ---
-title: "Project 5: Cross Tabls"
+title: "Project 5: Cross Tabs"
 author: "Jeffrey Zhang and Jaclyn Nguyen"
 date: April 13, 2015
 output: html_document
@@ -23,6 +23,28 @@ source("../03 Data/df.R",echo = T)
 tbl_df(df)
 ```
 
+## From this rank crosstab, we can clearly see the rank of a specific medicial payment(on AVG) in each state. For example, a $738 medical payment is on the 10th rank in AK state. Therefore, this crosstab is very useful for us to visulize the rank for a specific medical payment in each state.
+
+```{r}
+rank <- data.frame(fromJSON(getURL(URLencode(gsub("\n", " ", '129.152.144.84:5001/rest/native/?query=
+"select PROVIDER_STATE,AVERAGE_TOTAL_PAYMENTS,PROVIDER_CITY,rank() 
+OVER (PARTITION BY PROVIDER_STATE order by AVERAGE_TOTAL_PAYMENTS desc) as STATE_RANK 
+from MEDCHARGE"
+')),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521:ORCL',USER='C##cs329e_jz7674',PASS='orcl_jz7674',MODE='native_mode',MODEL='model',returnDimensions = 'False',returnFor = 'JSON'),verbose = TRUE))); tbl_df(rank)
+
+```
+
+## from this nth_value crosstab, we can clearly see the nth value of the medical payment (on AVG) in each state as we want. For exmaple, if we want to see the fifth value of the medicial payment in each state, we can put 5 in the nth_value parameter. 
+
+```{r}
+nth_value <- df <- data.frame(fromJSON(getURL(URLencode(gsub("\n", " ", '129.152.144.84:5001/rest/native/?query=
+"SELECT PROVIDER_STATE,AVERAGE_TOTAL_PAYMENTS,PROVIDER_CITY, nth_value(AVERAGE_TOTAL_PAYMENTS, 2)
+OVER (PARTITION BY PROVIDER_STATE) Max_AVG_Total_Payments 
+FROM MEDCHARGE
+order by 2,3 desc"
+')),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521/ORCL', USER='C##cs329e_jz7674', PASS='orcl_jz7674', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'
+), verbose = TRUE))); tbl_df(nth_value)
+```
 
 
 
