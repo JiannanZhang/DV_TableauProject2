@@ -22,3 +22,10 @@ require(reshape2)
 source("../03 Data/df.R",echo = T)
 tbl_df(df)
 ```
+
+
+
+
+
+
+
