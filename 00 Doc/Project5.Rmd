@@ -28,7 +28,6 @@ The data set can be found at [Medicare Provider Utilization and Payment Data: Ou
 
 ```{r}
 source("../03 Data/df.R",echo = T)
-tbl_df(df)
 ```
 __3. Crosstabss created through SQL query in R__
 From this rank crosstab, we can clearly see the rank of a specific medicial payment(on AVG) in each state. For example, a $738 medical payment is on the 10th rank in AK state. Therefore, this crosstab is very useful for us to visulize the rank for a specific medical payment in each state.
@@ -38,25 +37,27 @@ source("../01 SQL crosstabs/rank.R", echo=T)
 ```
 
 
-```{r}
+```{r,fig.width=12}
 source("../01 SQL crosstabs/last_max_diff.R", echo=T)
 ```
 
-from this nth_value crosstab, we can clearly see the nth value of the medical payment (on AVG) in each state as we want. For exmaple, if we want to see the fifth value of the medicial payment in each state, we can put 5 in the nth_value parameter. 
-
-```{r}
+From this nth_value crosstab, we can clearly see the nth value of the medical payment (on AVG) in each state as we want. For exmaple, if we want to see the fifth value of the medicial payment in each state, we can put 5 in the nth_value parameter.
+```{r,fig.width=12}
 source("../01 SQL crosstabs/nth_value.R", echo=T)
 ```
 
-```{r}
+```{r,fig.width=12}
 source("../01 SQL crosstabs/cumediff.R", echo=T)
 ```
 __4. Crosstabs created through Tableau__
+## rank
 ![](./rank1.jpg)
+## diff
 ![](./diff1.jpg)
+## nth_value
 ![](./nth_value_1st.jpg)
+## cume_dist
 ![](./Cume_dist.jpg)
-
 
 ```{r fig.width=7, fig.height=6}
 ```

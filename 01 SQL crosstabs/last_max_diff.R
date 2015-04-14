@@ -8,4 +8,4 @@ OVER (PARTITION BY APC) Max_Services
 FROM MEDCHARGE)
 order by 1,2"
 ')),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521:ORCL',USER='C##cs329e_jz7674',PASS='orcl_jz7674',MODE='native_mode',MODEL='model',returnDimensions = 'False',returnFor = 'JSON'),verbose = TRUE)))
-tbl_df(difference)
+head(difference)
