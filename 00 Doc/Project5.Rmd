@@ -5,11 +5,8 @@ date: April 13, 2015
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache=FALSE)
-```
 
-__1. Loading of R packages: RCurl, ggplot2, extrafont, jsonlite, dplyr, tidyr, extrafont, jsonlite, reshape2 (R code not shown)__
+####__1. Loading of R packages: RCurl, ggplot2, extrafont, jsonlite, dplyr, tidyr, extrafont, jsonlite, reshape2 (R code not shown)__
 
 ```{r, include=FALSE}
 library(RCurl)
@@ -21,7 +18,8 @@ require(dplyr)
 require(tidyr)
 require(reshape2)
 ```
-__2. Data__
+
+####__2. Data__
 Data that is provided for Project2 was selected from the Centers for Medicare and Medicaid Services (CMS). This center provides information about all health care services in America. In this project, Jeffrey and Jackie are focusing on Medicare Providers and the medical charges for outpatient services in 2012. 
 
 The data set can be found at [Medicare Provider Utilization and Payment Data: Outpatient](http://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Outpatient.html)
@@ -29,34 +27,42 @@ The data set can be found at [Medicare Provider Utilization and Payment Data: Ou
 ```{r}
 source("../03 Data/df.R",echo = T)
 ```
-__3. Crosstabss created through SQL query in R__
-From this rank crosstab, we can clearly see the rank of a specific medicial payment(on AVG) in each state. For example, a $738 medical payment is on the 10th rank in AK state. Therefore, this crosstab is very useful for us to visulize the rank for a specific medical payment in each state.
+####__3. Crosstabss created through SQL query in R__
 
+The project requirements has requirements of displaying crosstabs using SQL query in R. The following crosstabs are rank, last value/max value & difference, nth value, and cumulative distribution.
+
+__Crosstab #1: Rank__
 ```{r}
 source("../01 SQL crosstabs/rank.R", echo=T)
 ```
 
+From Rank crosstab, we can clearly see the rank of a specific medicial payment(on AVG) in each state. For example, a $738 medical payment is on the 10th rank in AK state. Therefore, this crosstab is very useful for us to visulize the rank for a specific medical payment in each state.
 
+__Crosstab #2: Last value/Max Value Difference__
 ```{r,fig.width=12}
 source("../01 SQL crosstabs/last_max_diff.R", echo=T)
 ```
 
-From this nth_value crosstab, we can clearly see the nth value of the medical payment (on AVG) in each state as we want. For exmaple, if we want to see the fifth value of the medicial payment in each state, we can put 5 in the nth_value parameter.
+__Crosstab #3: Nth Value__
 ```{r,fig.width=12}
 source("../01 SQL crosstabs/nth_value.R", echo=T)
 ```
 
+From this nth_value crosstab, we can clearly see the nth value of the medical payment (on AVG) in each state as we want. For exmaple, if we want to see the fifth value of the medicial payment in each state, we can put 5 in the nth_value parameter.
+
+__Crosstab #4: Cumulative Distribution__
+
 ```{r,fig.width=12}
 source("../01 SQL crosstabs/cumediff.R", echo=T)
 ```
-__4. Crosstabs created through Tableau__
-## rank
+####__4. Crosstabs created through Tableau__
+__Rank Crosstab__
 ![](./rank1.jpg)
-## diff
+__Last Value/Max Value and their Differences__
 ![](./diff1.jpg)
-## nth_value
+__Nth_value__
 ![](./nth_value_1st.jpg)
-## cume_dist
+__Cumulative Distribution__
 ![](./Cume_dist.jpg)
 
 ```{r fig.width=7, fig.height=6}
