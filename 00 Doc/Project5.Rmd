@@ -6,6 +6,10 @@ output: html_document
 ---
 
 
+
+
+
+
 ####__1. Loading of R packages: RCurl, ggplot2, extrafont, jsonlite, dplyr, tidyr, extrafont, jsonlite, reshape2 (R code not shown)__
 
 ```{r, include=FALSE}
@@ -43,6 +47,8 @@ __Crosstab #2: Last value/Max Value Difference__
 source("../01 SQL crosstabs/last_max_diff.R", echo=T)
 ```
 
+This crosstab will partition by APC which are codes determined by the Center for Medicare and Medicaid to breakdown the different types of outpatient services (including level of service). We can see from here that in Arkansas has a max outpient services number of 25502 in Level 12 - Level I Debridement  and  Destruction. The crosstab goes through each Arkansas location and determine the difference between the number of outpatient services of that location and the max number of outpatient services. 
+
 __Crosstab #3: Nth Value__
 ```{r,fig.width=12}
 source("../01 SQL crosstabs/nth_value.R", echo=T)
@@ -56,13 +62,30 @@ __Crosstab #4: Cumulative Distribution__
 source("../01 SQL crosstabs/cumediff.R", echo=T)
 ```
 ####__4. Crosstabs created through Tableau__
-__Rank Crosstab__
+
+Below are sample crosstabs created in Tableau. 
+
+#####__Rank Crosstab__
+
+This crosstab will show the rankings of average payment cost, broken down by state and city descending.
 ![](./rank1.jpg)
-__Last Value/Max Value and their Differences__
+
+
+#####__Last Value/Max Value and their Differences Crosstab__
+
+This will show the current value, max value, and their differences for two states.
 ![](./diff1.jpg)
-__Nth_value__
+
+
+#####__Nth_value Crosstab__
+
+The samples will shoe the 1st, 2nd,and 3rd Nth value among the average payment cost.
 ![](./nth_value_1st.jpg)
-__Cumulative Distribution__
+
+
+#####__Cumulative Distribution Crosstab__
+
+Cumulative distribution among the outpatient services based on APC
 ![](./Cume_dist.jpg)
 
 ```{r fig.width=7, fig.height=6}
