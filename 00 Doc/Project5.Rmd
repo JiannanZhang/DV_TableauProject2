@@ -61,7 +61,10 @@ __Crosstab #4: Cumulative Distribution__
 ```{r,fig.width=12}
 source("../01 SQL crosstabs/cumediff.R", echo=T)
 ```
-####__4. Crosstabs created through Tableau__
+
+The crosstab created here shows the cumulative distribution of outpatient services partitioned by APC. Our sample figure above shows that in 0012 - Level I Debridement  and  Destruction, West Virginia has a provider that had 168 outpatient services which is equivalent to 54.4% distribution of the total outpatient services in APC 0012.
+
+##__4. Crosstabs created through Tableau__
 
 Below are sample crosstabs created in Tableau. 
 
